@@ -23,7 +23,7 @@ public class StudentDaoTest {
   @Transactional
   public void shouldCreateStudentInDatabase() {
     Student student = studentDao.saveStudent(new Student("Imteyaz", "Ahmad"));
-    Assert.assertEquals(4L, student.getId(), 0);
+    Assert.assertEquals(1L, student.getId(), 0);
   }
 
   @Test

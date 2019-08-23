@@ -25,7 +25,9 @@ public class TestDataSource {
   public void shouldCreateDataSource() {
     try (Connection connection = dataSource.getConnection()) {
       DatabaseMetaData metaData = connection.getMetaData();
-      Assert.assertEquals(5, metaData.getDatabaseMajorVersion());
+      Assert.assertEquals("H2", metaData.getDatabaseProductName());
+      Assert.assertEquals(1, metaData.getDatabaseMajorVersion());
+      Assert.assertEquals(4, metaData.getDatabaseMinorVersion());
     } catch (SQLException e) {
       e.printStackTrace();
     }

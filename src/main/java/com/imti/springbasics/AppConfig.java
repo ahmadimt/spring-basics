@@ -26,10 +26,10 @@ public class AppConfig {
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource ds = new DriverManagerDataSource();
-    ds.setDriverClassName("com.mysql.jdbc.Driver");
-    ds.setUrl("jdbc:mysql://localhost/svce?useSSL=false");
-    ds.setUsername("root");
-    ds.setPassword("root");
+    //ds.setDriverClassName("com.mysql.jdbc.Driver");
+    ds.setUrl("jdbc:h2:~/test");
+    ds.setUsername("sa");
+    ds.setPassword("sa");
     return ds;
   }
 
@@ -62,7 +62,7 @@ public class AppConfig {
     Properties properties = new Properties();
     properties.setProperty("hibernate.hbm2ddl.auto", "update");
     properties.setProperty("hibernate.show_sql", "true");
-    properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+    properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
     properties.setProperty("hibernate.physical_naming_strategy", "com.imti.springbasics.PhysicalNamingStrategyImpl");
     return properties;
   }

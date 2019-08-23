@@ -7,12 +7,12 @@ import java.util.List;
  **/
 public interface StudentDao {
 
-  int saveStudent(Student student);
+  Student saveStudent(Student student);
 
   List<Student> selectAll();
 
   int deleteById(int id);
 
-  int updateStudent(Student student, int id);
+  int updateStudent(Student student);
 
 }

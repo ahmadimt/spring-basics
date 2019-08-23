@@ -1,6 +1,7 @@
 package com.imti.springbasics;
 
 import java.util.List;
+import javax.transaction.Transactional;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,9 +20,10 @@ public class StudentDaoTest {
   private StudentDao studentDao;
 
   @Test
+  @Transactional
   public void shouldCreateStudentInDatabase() {
-    int student = studentDao.saveStudent(new Student("Imteyaz", "Ahmad"));
-    Assert.assertEquals(1, student);
+    Student student = studentDao.saveStudent(new Student("Imteyaz", "Ahmad"));
+    Assert.assertEquals(4L, student.getId(), 0);
   }
 
   @Test
@@ -41,7 +43,7 @@ public class StudentDaoTest {
 
   @Test
   public void shouldUpdateStudent() {
-    int status = studentDao.updateStudent(new Student("Imti", "Ahmad"),2);
+    int status = studentDao.updateStudent(new Student("Imti", "Ahmad"));
     Assert.assertEquals(1, status);
   }
 }

@@ -23,7 +23,7 @@ public class StudentRepoTest {
   @Transactional
   public void shouldCreateStudentInDatabase() {
     Student student = studentRepo.save(new Student("Imteyaz", "Ahmad"));
-    Assert.assertEquals(11L, student.getId(), 0);
+    Assert.assertEquals(1L, student.getId(), 0);
   }
 
   @Test

@@ -17,10 +17,10 @@ public class AppConfig {
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource ds = new DriverManagerDataSource();
-    ds.setDriverClassName("com.mysql.jdbc.Driver");
-    ds.setUrl("jdbc:mysql://localhost/svce?useSSL=false");
-    ds.setUsername("root");
-    ds.setPassword("root");
+    //ds.setDriverClassName("com.mysql.jdbc.Driver");
+    ds.setUrl("jdbc:h2:~/test");
+    ds.setUsername("sa");
+    ds.setPassword("sa");
     return ds;
   }
 

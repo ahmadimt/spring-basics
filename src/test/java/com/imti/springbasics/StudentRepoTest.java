@@ -14,36 +14,38 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class})
-public class StudentDaoTest {
+public class StudentRepoTest {
 
   @Autowired
-  private StudentDao studentDao;
+  private StudentRepo studentRepo;
 
   @Test
   @Transactional
   public void shouldCreateStudentInDatabase() {
-    Student student = studentDao.saveStudent(new Student("Imteyaz", "Ahmad"));
-    Assert.assertEquals(4L, student.getId(), 0);
+    Student student = studentRepo.save(new Student("Imteyaz", "Ahmad"));
+    Assert.assertEquals(11L, student.getId(), 0);
   }
 
   @Test
   public void shouldListAllStudentsInDb() {
-    List<Student> students = studentDao.selectAll();
+    List<Student> students = studentRepo.findAll();
     Student student = students.get(0);
-    Assert.assertEquals(2, students.size());
+    Assert.assertEquals(4, students.size());
     Assert.assertEquals("Imteyaz", student.getFirstName());
   }
 
 
   @Test
   public void shouldDeleteStudentById() {
-    int status = studentDao.deleteById(1);
-    Assert.assertEquals(1, status);
+    studentRepo.deleteById(1L);
+
   }
 
   @Test
   public void shouldUpdateStudent() {
-    int status = studentDao.updateStudent(new Student("Imti", "Ahmad"));
+    Student student = new Student("Imti", "Ahmad");
+    student.setId(1L);
+    Student status = studentRepo.save(student);
     Assert.assertEquals(1, status);
   }
 }

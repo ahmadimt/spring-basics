@@ -14,8 +14,8 @@ public class SpringBasicsMain {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
     ctx.register(AppConfig.class);
     ctx.refresh();
-    StudentDao studentDao = ctx.getBean(StudentDao.class);
-    Student student = studentDao.saveStudent(new Student("Imteyaz", "Ahmad"));
+    StudentRepo studentDao = ctx.getBean(StudentRepo.class);
+    Student student = studentDao.save(new Student("Imteyaz", "Ahmad"));
     System.out.println(student.getId());
   }
 }
